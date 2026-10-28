@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Práctica - DOM en HTML y JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #mensaje {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Ejemplo Práctico del DOM</h2>
+        
+        <!-- Elemento para modificar textContent -->
+        <p id="parrafoTexto">Este es el texto original del párrafo.</p>
+        <button id="btnTexto">Cambiar Texto</button>
+
+        <hr style="margin: 20px 0;">
+
+        <!-- Elementos para interactuar con value y addEventListener -->
+        <label for="nombreInput">Escribe tu nombre:</label><br>
+        <input type="text" id="nombreInput" placeholder="Ej. Juan">
+        <button id="btnSaludar">Saludar</button>
+
+        <p id="mensaje"></p>
+    </div>
+
+    <!-- Script de JavaScript -->
+    <script>
+        // Ejemplo 1: Usando getElementById() y textContent
+        const btnTexto = document.getElementById('btnTexto');
+        const parrafoTexto = document.getElementById('parrafoTexto');
+
+        btnTexto.addEventListener('click', function() {
+            parrafoTexto.textContent = '¡El texto ha sido modificado exitosamente usando el DOM!';
+        });
+
+        // Ejemplo 2: Usando value y addEventListener con otro botón
+        const btnSaludar = document.getElementById('btnSaludar');
+        const nombreInput = document.getElementById('nombreInput');
+        const mensaje = document.getElementById('mensaje');
+
+        btnSaludar.addEventListener('click', function() {
+            const valorUsuario = nombreInput.value;
+            if(valorUsuario.trim() !== "") {
+                mensaje.textContent = '¡Hola, ' + valorUsuario + '! Bienvenido a la manipulación del DOM.';
+            } else {
+                mensaje.textContent = 'Por favor, escribe un nombre primero.';
+            }
+        });
+    </script>
+
+</body>
+</html>
